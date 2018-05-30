@@ -6,6 +6,6 @@ module.exports = callback => {
 	ensurePlainFunction(callback);
 	const cache = process.env;
 	process.env = {};
-	try { callback(cache); }
+	try { return callback(cache); }
 	finally { process.env = cache; }
 };
