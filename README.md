@@ -19,7 +19,7 @@ npm install process-utils
 #### `override-env`
 
 Overrides `process.env` for time of callback invocation. Helpful when testing modules which behavior
-relies on environment settings/
+relies on environment settings.
 
 ```javascript
 const overrideEnv = require("process-utls/override-env");
@@ -42,8 +42,8 @@ npm test
 
 [nix-build-image]: https://semaphoreci.com/api/v1/medikoo-org/process-utils/branches/master/shields_badge.svg
 [nix-build-url]: https://semaphoreci.com/medikoo-org/process-utils
-[win-build-image]: https://ci.appveyor.com/api/projects/status/?svg=true
-[win-build-url]: https://ci.appveyor.com/api/projects/status/
+[win-build-image]: https://ci.appveyor.com/api/projects/status/mgttc0h68grk2i6s?svg=true
+[win-build-url]: https://ci.appveyor.com/api/projects/status/mgttc0h68grk2i6s
 [cov-image]: https://img.shields.io/codecov/c/github/medikoo/process-utils.svg
 [cov-url]: https://codecov.io/gh/medikoo/process-utils
 [transpilation-image]: https://img.shields.io/badge/transpilation-free-brightgreen.svg
