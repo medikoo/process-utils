@@ -25,12 +25,14 @@ relies on environment settings.
 const overrideEnv = require("process-utls/override-env");
 
 process.env.FOO = "bar";
-overrideEnv(originalEnv => {
-  // Exposes original `process.env` as first callback argument
-  console.log(originalEnv.FOO); // "bar";
-  // Current `process.env` points other (empty plain) object
-  console.log(process.env.FOO); // undefined;
-});
+const { restoreEnv, originalEnv } = overrideEnv();
+// Exposes original `process.env`
+console.log(originalEnv.FOO); // "bar";
+// Current `process.env` points other (empty plain) object
+console.log(process.env.FOO); // undefined;
+
+// Provides a callback to restore previous state
+restoreEnv();
 console.log(process.env.FOO); // "bar"
 ```
 
