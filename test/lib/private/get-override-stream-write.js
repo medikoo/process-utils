@@ -7,13 +7,14 @@ module.exports = (type, overrideStream) =>
 		const stream = process[`std${ type }`];
 		const { write } = stream;
 		let data, passedWrite;
-		const { superWrite, originalWrite, restoreWrite } = overrideStream(
-			(chunk, writeToOriginal) => {
-				data = chunk;
-				passedWrite = writeToOriginal;
-				return true;
-			}
-		);
+		const result = overrideStream((chunk, writeToOriginal) => {
+			data = chunk;
+			passedWrite = writeToOriginal;
+			return true;
+		});
+		const superWrite = result[`superStd${ type }Write`];
+		const originalWrite = result[`originalStd${ type }Write`];
+		const restoreWrite = result[`restoreStd${ type }Write`];
 		const overridenWrite = stream.write;
 		stream.write("Foo\nBar");
 		restoreWrite();

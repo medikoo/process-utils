@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = require("./lib/private/get-override-stream-write")(process.stdout);
+module.exports = require("./lib/private/get-override-stream-write")("out");
