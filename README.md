@@ -36,6 +36,26 @@ restoreEnv();
 console.log(process.env.FOO); // "bar"
 ```
 
+#### `override-stdout-write` & `override-stderr-write
+
+Override `process.stdout.write` or `process.stderr.write` with provided alternative
+
+```javascript
+const overrideStdoutWrite = require("process-utls/override-stdout-write");
+
+// Configure decorator that will strip ANSI codes
+const {
+  superStdoutWrite, // Original `write` bound to `process.stdout`
+  originalStdoutWrite, // Original `write` on its own
+  restoreStdoutWrite // Allows to restore previous state
+} = overrideStdoutWrite((data, superWrite) => superWrite(stripAnsi(data)));
+
+process.stdout.write(someAnsiCodeDecoratedString); // will be output with ANSI codes stripped out
+
+// Restore previous state
+restoreStdoutWrite();
+```
+
 ### Tests
 
 ```bash
