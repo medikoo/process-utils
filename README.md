@@ -45,8 +45,8 @@ const overrideStdoutWrite = require("process-utls/override-stdout-write");
 
 // Configure decorator that will strip ANSI codes
 const {
-  superStdoutWrite, // Original `write` bound to `process.stdout`
-  originalStdoutWrite, // Original `write` on its own
+  originalStdoutWrite, // Original `write` bound to `process.stdout`
+  originalWrite, // Original `write` on its own
   restoreStdoutWrite // Allows to restore previous state
 } = overrideStdoutWrite((data, superWrite) => superWrite(stripAnsi(data)));
 

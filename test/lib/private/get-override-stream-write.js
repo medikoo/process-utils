@@ -12,8 +12,8 @@ module.exports = (type, overrideStream) =>
 			passedWrite = writeToOriginal;
 			return true;
 		});
-		const superWrite = result[`superStd${ type }Write`];
-		const originalWrite = result[`originalStd${ type }Write`];
+		const originalStdWrite = result[`originalStd${ type }Write`];
+		const { originalWrite } = result;
 		const restoreWrite = result[`restoreStd${ type }Write`];
 		const overridenWrite = stream.write;
 		stream.write("Foo\nBar");
@@ -21,7 +21,7 @@ module.exports = (type, overrideStream) =>
 		t.notEqual(write, overridenWrite, "Should override write");
 		t.equal(originalWrite, write, "Should expose overriden method");
 		t.equal(data, "Foo\nBar", "Should override with passed function");
-		t.equal(passedWrite, superWrite, "Should pass direct write function");
+		t.equal(passedWrite, originalStdWrite, "Should pass direct write function");
 		t.equal(stream.write, write, "Should restore original write");
 		t.end();
 	});
