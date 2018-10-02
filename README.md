@@ -18,7 +18,7 @@ npm install process-utils
 
 #### `override-env`
 
-Overrides `process.env` for time of callback invocation. Helpful when testing modules which behavior
+Overrides `process.env` until provided `restoreEnv()` is called. Helpful when testing modules which behavior
 relies on environment settings.
 
 ```javascript
