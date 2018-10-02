@@ -36,7 +36,7 @@ restoreEnv();
 console.log(process.env.FOO); // "bar"
 ```
 
-#### `override-stdout-write` & `override-stderr-write
+#### `override-stdout-write` & `override-stderr-write`
 
 Override `process.stdout.write` or `process.stderr.write` with provided alternative
 
