@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/medikoo/process-utils/compare/v2.0.0...v2.0.1) (2018-10-02)
+
+
+### Bug Fixes
+
+* ensure set and defined properties are stringified ([6b94dc7](https://github.com/medikoo/process-utils/commit/6b94dc7)), closes [#1](https://github.com/medikoo/process-utils/issues/1)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/medikoo/process-utils/compare/v1.1.0...v2.0.0) (2018-09-20)
 
