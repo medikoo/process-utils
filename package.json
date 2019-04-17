@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^5.16.0",
-		"eslint-config-medikoo": "^1.44.0",
+		"eslint-config-medikoo": "^2.1.1",
 		"istanbul": "^0.4.5",
 		"tape": "^4.10.1",
 		"tape-index": "^2.0.0"
