@@ -10,14 +10,14 @@
 	],
 	"repository": "medikoo/process-utils",
 	"dependencies": {
-		"es5-ext": "^0.10.46"
+		"es5-ext": "^0.10.49"
 	},
 	"devDependencies": {
-		"eslint": "^5.6",
-		"eslint-config-medikoo": "^1.42",
+		"eslint": "^5.16.0",
+		"eslint-config-medikoo": "^1.44.0",
 		"istanbul": "^0.4.5",
-		"tape": "^4.9.1",
-		"tape-index": "2"
+		"tape": "^4.10.1",
+		"tape-index": "^2.0.0"
 	},
 	"eslintConfig": {
 		"extends": "medikoo",
