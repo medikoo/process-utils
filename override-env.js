@@ -1,6 +1,6 @@
 "use strict";
 
-const ensureObject = require("es5-ext/object/valid-object");
+const ensureObject = require("type/object/ensure");
 
 module.exports = () => {
 	const cache = process.env;

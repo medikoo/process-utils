@@ -10,7 +10,7 @@
 	],
 	"repository": "medikoo/process-utils",
 	"dependencies": {
-		"es5-ext": "^0.10.49"
+		"type": "^1.0.1"
 	},
 	"devDependencies": {
 		"eslint": "^5.16.0",
