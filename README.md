@@ -36,6 +36,23 @@ restoreEnv();
 console.log(process.env.FOO); // "bar"
 ```
 
+##### Override env as copy of original
+
+```javascript
+process.env.FOO = "bar";
+const { restoreEnv, originalEnv } = overrideEnv({ asCopy: true });
+// Exposes process.env props
+console.log(process.env.FOO); // "bar"
+
+process.env.BAR = "elo";
+// Further updates doesn't affect cached original env
+console.log(originalEnv.BAR); // undefined
+
+// Provides a callback to restore previous state
+restoreEnv();
+console.log(process.env.BAR); // undefined
+```
+
 #### `override-stdout-write` & `override-stderr-write`
 
 Override `process.stdout.write` or `process.stderr.write` with provided alternative
@@ -45,9 +62,9 @@ const overrideStdoutWrite = require("process-utls/override-stdout-write");
 
 // Configure decorator that will strip ANSI codes
 const {
-  originalStdoutWrite, // Original `write` bound to `process.stdout`
-  originalWrite, // Original `write` on its own
-  restoreStdoutWrite // Allows to restore previous state
+    originalStdoutWrite, // Original `write` bound to `process.stdout`
+    originalWrite, // Original `write` on its own
+    restoreStdoutWrite // Allows to restore previous state
 } = overrideStdoutWrite((data, superWrite) => superWrite(stripAnsi(data)));
 
 process.stdout.write(someAnsiCodeDecoratedString); // will be output with ANSI codes stripped out
