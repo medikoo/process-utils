@@ -18,8 +18,8 @@
 		"essentials": "^1.0.0",
 		"git-list-updated": "^1.1.2",
 		"husky": "^1.3.1",
-		"istanbul": "^0.4.5",
 		"lint-staged": "^8.1.5",
+		"nyc": "^14.0.0",
 		"prettier-elastic": "^1.17.0",
 		"tape": "^4.10.1",
 		"tape-index": "^3.1.0"
@@ -45,8 +45,8 @@
 		}
 	},
 	"scripts": {
-		"coverage": "tape-index && istanbul cover test.index.js",
-		"check-coverage": "npm run coverage && istanbul check-coverage --statements 100 --function 100 --branches 100 --lines 100",
+		"coverage": "nyc --reporter=lcov --reporter=html --reporter=text-summary npm test",
+		"check-coverage": "npm run coverage && nyc check-coverage --statements 100 --function 100 --branches 100 --lines 100",
 		"lint": "eslint --ignore-path=.gitignore .",
 		"lint-updated": "pipe-git-updated --ext=js -- eslint --ignore-pattern '!*'",
 		"prettier-check-updated": "pipe-git-updated --ext=css --ext=html --ext=js --ext=json --ext=md --ext=yaml --ext=yml -- prettier -c",
