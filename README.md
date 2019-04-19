@@ -22,7 +22,7 @@ Overrides `process.env` until provided `restoreEnv()` is called. Helpful when te
 relies on environment settings.
 
 ```javascript
-const overrideEnv = require("process-utls/override-env");
+const overrideEnv = require("process-utils/override-env");
 
 process.env.FOO = "bar";
 const { restoreEnv, originalEnv } = overrideEnv();
@@ -58,7 +58,7 @@ console.log(process.env.BAR); // undefined
 Override `process.stdout.write` or `process.stderr.write` with provided alternative
 
 ```javascript
-const overrideStdoutWrite = require("process-utls/override-stdout-write");
+const overrideStdoutWrite = require("process-utils/override-stdout-write");
 
 // Configure decorator that will strip ANSI codes
 const {
