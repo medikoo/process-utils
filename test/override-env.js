@@ -44,5 +44,19 @@ test("overrideEnv", t => {
 		t.end();
 	});
 
+	t.test("Callback", t => {
+		env.FOO = "bar";
+		try {
+			overrideEnv(originalEnv => {
+				t.notEqual(process.env, env, "Should override env");
+				t.equal(process.env.FOO, undefined, "Should not copy existing variables");
+				t.equal(originalEnv, env, "Should expose original env as an argument");
+			});
+			t.equal(process.env, env, "Should restore original env after calling a callback");
+		} finally {
+			delete env.FOO;
+		}
+		t.end();
+	});
 	t.end();
 });

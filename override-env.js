@@ -1,10 +1,16 @@
 "use strict";
 
-const isObject     = require("type/object/is")
-    , ensureObject = require("type/object/ensure");
+const isPlainFunction = require("type/plain-function/is")
+    , isObject        = require("type/object/is")
+    , ensureObject    = require("type/object/ensure");
 
-module.exports = (options = {}) => {
-	if (!isObject(options)) options = {};
+module.exports = (options = {}, callback = null) => {
+	if (isPlainFunction(options)) {
+		callback = options;
+		options = {};
+	} else if (!isObject(options)) {
+		options = {};
+	}
 	const cache = process.env;
 	const baseEnv = {};
 	if (options.asCopy) Object.assign(baseEnv, cache);
@@ -18,5 +24,10 @@ module.exports = (options = {}) => {
 			});
 		}
 	});
-	return { originalEnv: cache, restoreEnv: () => (process.env = cache) };
+	const restoreEnv = () => (process.env = cache);
+
+	if (!callback) return { originalEnv: cache, restoreEnv };
+
+	try { return callback(cache); }
+	finally { restoreEnv(); }
 };
