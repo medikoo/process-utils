@@ -2,7 +2,8 @@
 
 const isPlainFunction = require("type/plain-function/is")
     , isObject        = require("type/object/is")
-    , ensureObject    = require("type/object/ensure");
+    , ensureObject    = require("type/object/ensure")
+    , isThenable      = require("type/thenable/is");
 
 module.exports = (options = {}, callback = null) => {
 	if (isPlainFunction(options)) {
@@ -28,6 +29,25 @@ module.exports = (options = {}, callback = null) => {
 
 	if (!callback) return { originalEnv: cache, restoreEnv };
 
-	try { return callback(cache); }
-	finally { restoreEnv(); }
+	let result;
+	try {
+		result = callback(cache);
+	} catch (error) {
+		restoreEnv();
+		throw error;
+	}
+	if (!isThenable(result)) {
+		restoreEnv();
+		return result;
+	}
+	return result.then(
+		resolvedResult => {
+			restoreEnv();
+			return resolvedResult;
+		},
+		error => {
+			restoreEnv();
+			throw error;
+		}
+	);
 };

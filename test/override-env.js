@@ -58,5 +58,20 @@ test("overrideEnv", t => {
 		}
 		t.end();
 	});
+
+	t.test("Callback returning thenable", t => {
+		let promise;
+		overrideEnv(() => {
+			promise = Promise.resolve();
+			return promise;
+		});
+		t.notEqual(
+			process.env, env, "Should wait with restoring original env until thenable resolves"
+		);
+		promise.then(() => {
+			t.equal(process.env, env, "Should restore original env after calling a callback");
+			t.end();
+		});
+	});
 	t.end();
 });
