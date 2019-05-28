@@ -29,6 +29,24 @@ test("overrideEnv", t => {
 		t.end();
 	});
 
+	t.test("Whitelist", t => {
+		env.FOO = "bar";
+		env.LOREM = "ispum";
+		try {
+			const { restoreEnv } = overrideEnv({ whitelist: ["FOO"] });
+			t.equal(process.env.FOO, "bar", "Should expose whitelisted variables");
+			t.equal(process.env.LOREM, undefined, "Should not expose not whitelisted variables");
+			process.env.BAR = "elo";
+			t.equal(env.BAR, undefined, "Should not leak new vers on cached env");
+
+			restoreEnv();
+		} finally {
+			delete env.FOO;
+			delete env.LOREM;
+		}
+		t.end();
+	});
+
 	t.test("As copy", t => {
 		env.FOO = "bar";
 		try {

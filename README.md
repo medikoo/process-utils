@@ -67,6 +67,17 @@ setTimeout(() => {
 }, 110);
 ```
 
+##### Provide a whitelist of env vars to expose on a copy
+
+```javascript
+process.env.FOO = "bar";
+process.env.LOREM = "ipsum";
+const { restoreEnv, originalEnv } = overrideEnv({ whitelist: ["FOO"] });
+// Exposes onlywhitelisted props
+console.log(process.env.FOO); // "bar"
+console.log(process.env.LOREM); // undefined
+```
+
 ##### Override env as copy of original
 
 ```javascript

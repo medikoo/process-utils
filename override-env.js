@@ -1,6 +1,7 @@
 "use strict";
 
-const isPlainFunction = require("type/plain-function/is")
+const ensureIterable  = require("type/iterable/ensure")
+    , isPlainFunction = require("type/plain-function/is")
     , isObject        = require("type/object/is")
     , ensureObject    = require("type/object/ensure")
     , isThenable      = require("type/thenable/is");
@@ -15,6 +16,13 @@ module.exports = (options = {}, callback = null) => {
 	const cache = process.env;
 	const baseEnv = {};
 	if (options.asCopy) Object.assign(baseEnv, cache);
+	if (options.whitelist) {
+		for (const varName of ensureIterable(options.whitelist, {
+			errorMessage: "options.whitelist expected to be an iterable, got %v"
+		})) {
+			baseEnv[varName] = cache[varName];
+		}
+	}
 	process.env = new Proxy(baseEnv, {
 		defineProperty(target, key, inputDescriptor) {
 			return Object.defineProperty(target, key, {
