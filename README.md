@@ -35,8 +35,7 @@ restoreEnv();
 console.log(process.env.FOO); // "bar"
 ```
 
-Optionally _callback_ can be passed to `overrideEnv`, then for a time of `process.env` override
-given callback is invoked:
+Optionally _callback_ can be passed to `overrideEnv`, it's invoked immediately, and only for a time of it's execution `process.env` is overriden:
 
 ```javascript
 const overrideEnv = require("process-utils/override-env");
@@ -53,7 +52,7 @@ overrideEnv(originalEnv => {
 console.log(process.env.FOO); // "bar"
 ```
 
-If passed _callback_ returns _thenable_ then restore of `process.env` is delayed until thenable is resolved
+However if _callback_ returns _thenable_ then `process.env` is restored when given _thenable_ resolves:
 
 ```javascript
 const overrideEnv = require("process-utils/override-env");
