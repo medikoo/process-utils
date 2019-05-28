@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/medikoo/process-utils/compare/v2.2.0...v2.3.0) (2019-05-28)
+
+### Features
+
+- 'whitelist' option for overrideEnv ([22117af](https://github.com/medikoo/process-utils/commit/22117af))
+
 ## [2.2.0](https://github.com/medikoo/process-utils/compare/v2.1.0...v2.2.0) (2019-05-28)
 
 ### Features
