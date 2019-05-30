@@ -6,6 +6,8 @@ const ensureIterable  = require("type/iterable/ensure")
     , ensureObject    = require("type/object/ensure")
     , isThenable      = require("type/thenable/is");
 
+const { hasOwnProperty } = Object.prototype;
+
 module.exports = (options = {}, callback = null) => {
 	if (isPlainFunction(options)) {
 		callback = options;
@@ -20,7 +22,7 @@ module.exports = (options = {}, callback = null) => {
 		for (const varName of ensureIterable(options.whitelist, {
 			errorMessage: "options.whitelist expected to be an iterable, got %v"
 		})) {
-			baseEnv[varName] = cache[varName];
+			if (hasOwnProperty.call(cache, varName)) baseEnv[varName] = cache[varName];
 		}
 	}
 	process.env = new Proxy(baseEnv, {
