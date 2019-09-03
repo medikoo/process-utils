@@ -35,8 +35,8 @@ module.exports = (options = {}, callback = null) => {
 			});
 		}
 	});
-	const restoreEnv = () => (process.env = original);
+	const restore = () => (process.env = original);
 
-	if (!callback) return { originalEnv: original, restoreEnv };
-	return processCallback(callback, original, restoreEnv);
+	if (!callback) return { originalEnv: original, restoreEnv: restore };
+	return processCallback(callback, original, restore);
 };
