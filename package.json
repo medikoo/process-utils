@@ -13,7 +13,7 @@
 		"type": "^1.0.3"
 	},
 	"devDependencies": {
-		"eslint": "^5.16.0",
+		"eslint": "^6.3.0",
 		"eslint-config-medikoo": "^2.5.1",
 		"essentials": "^1.0.0",
 		"git-list-updated": "^1.2.1",
