@@ -12,6 +12,7 @@ test("overrideArgv", t => {
 			t.equal(original, argv, "Should expose original");
 			t.deepEqual(process.argv, argv.slice(0, 1), "By default should strip argv to one item");
 		});
+		t.equal(process.argv, argv, "Should restore original after calling a callback");
 		t.end();
 	});
 
