@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/medikoo/process-utils/compare/v2.4.0...v2.5.0) (2019-09-03)
+
+### Features
+
+- overrideCwd util ([1f72bca](https://github.com/medikoo/process-utils/commit/1f72bca))
+
+### Tests
+
+- Improve overrideArgv tests ([eded4dc](https://github.com/medikoo/process-utils/commit/eded4dc))
+
 ## [2.4.0](https://github.com/medikoo/process-utils/compare/v2.3.1...v2.4.0) (2019-09-03)
 
 ### Features
