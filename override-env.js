@@ -1,15 +1,17 @@
 "use strict";
 
-const ensureIterable  = require("type/iterable/ensure")
-    , isPlainFunction = require("type/plain-function/is")
-    , isObject        = require("type/object/is")
-    , ensureObject    = require("type/object/ensure")
-    , processCallback = require("./lib/private/process-callback");
+const ensureIterable      = require("type/iterable/ensure")
+    , isPlainFunction     = require("type/plain-function/is")
+    , ensurePlainFunction = require("type/plain-function/ensure")
+    , isObject            = require("type/object/is")
+    , ensureObject        = require("type/object/ensure")
+    , processCallback     = require("./lib/private/process-callback");
 
 const { hasOwnProperty: objHasOwnProperty } = Object.prototype;
 
 module.exports = (options = {}, callback = null) => {
-	if (isPlainFunction(options)) {
+	ensurePlainFunction(callback, { isOptional: true });
+	if (!callback && isPlainFunction(options)) {
 		callback = options;
 		options = {};
 	} else if (!isObject(options)) {

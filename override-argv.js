@@ -1,14 +1,16 @@
 "use strict";
 
-const ensureArrayLength = require("type/array-length/ensure")
-    , ensureIterable    = require("type/iterable/ensure")
-    , ensureString      = require("type/string/ensure")
-    , isPlainFunction   = require("type/plain-function/is")
-    , isObject          = require("type/object/is")
-    , processCallback   = require("./lib/private/process-callback");
+const ensureArrayLength   = require("type/array-length/ensure")
+    , ensureIterable      = require("type/iterable/ensure")
+    , ensureString        = require("type/string/ensure")
+    , isPlainFunction     = require("type/plain-function/is")
+    , ensurePlainFunction = require("type/plain-function/ensure")
+    , isObject            = require("type/object/is")
+    , processCallback     = require("./lib/private/process-callback");
 
 module.exports = (options = {}, callback = null) => {
-	if (isPlainFunction(options)) {
+	ensurePlainFunction(callback, { isOptional: true });
+	if (!callback && isPlainFunction(options)) {
 		callback = options;
 		options = {};
 	} else if (!isObject(options)) {
