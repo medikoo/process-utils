@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/medikoo/process-utils/compare/v2.3.1...v2.4.0) (2019-09-03)
+
+### Features
+
+- overrideArgv util ([f83fc37](https://github.com/medikoo/process-utils/commit/f83fc37))
+
 ### [2.3.1](https://github.com/medikoo/process-utils/compare/v2.3.0...v2.3.1) (2019-05-30)
 
 ### Bug Fixes
