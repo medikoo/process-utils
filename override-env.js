@@ -4,7 +4,7 @@ const ensureIterable  = require("type/iterable/ensure")
     , isPlainFunction = require("type/plain-function/is")
     , isObject        = require("type/object/is")
     , ensureObject    = require("type/object/ensure")
-    , isThenable      = require("type/thenable/is");
+    , processCallback = require("./lib/private/process-callback");
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -38,26 +38,5 @@ module.exports = (options = {}, callback = null) => {
 	const restoreEnv = () => (process.env = original);
 
 	if (!callback) return { originalEnv: original, restoreEnv };
-
-	let result;
-	try {
-		result = callback(original);
-	} catch (error) {
-		restoreEnv();
-		throw error;
-	}
-	if (!isThenable(result)) {
-		restoreEnv();
-		return result;
-	}
-	return result.then(
-		resolvedResult => {
-			restoreEnv();
-			return resolvedResult;
-		},
-		error => {
-			restoreEnv();
-			throw error;
-		}
-	);
+	return processCallback(callback, original, restoreEnv);
 };
