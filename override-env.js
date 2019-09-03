@@ -6,7 +6,7 @@ const ensureIterable  = require("type/iterable/ensure")
     , ensureObject    = require("type/object/ensure")
     , processCallback = require("./lib/private/process-callback");
 
-const { hasOwnProperty } = Object.prototype;
+const { hasOwnProperty: objHasOwnProperty } = Object.prototype;
 
 module.exports = (options = {}, callback = null) => {
 	if (isPlainFunction(options)) {
@@ -22,7 +22,7 @@ module.exports = (options = {}, callback = null) => {
 		for (const varName of ensureIterable(options.whitelist, {
 			errorMessage: "options.whitelist expected to be an iterable, got %v"
 		})) {
-			if (hasOwnProperty.call(original, varName)) counterpart[varName] = original[varName];
+			if (objHasOwnProperty.call(original, varName)) counterpart[varName] = original[varName];
 		}
 	}
 	process.env = new Proxy(counterpart, {
