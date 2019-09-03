@@ -16,16 +16,16 @@ module.exports = (options = {}, callback = null) => {
 		options = {};
 	}
 	const original = process.env;
-	const baseEnv = {};
-	if (options.asCopy) Object.assign(baseEnv, original);
+	const counterpart = {};
+	if (options.asCopy) Object.assign(counterpart, original);
 	if (options.whitelist) {
 		for (const varName of ensureIterable(options.whitelist, {
 			errorMessage: "options.whitelist expected to be an iterable, got %v"
 		})) {
-			if (hasOwnProperty.call(original, varName)) baseEnv[varName] = original[varName];
+			if (hasOwnProperty.call(original, varName)) counterpart[varName] = original[varName];
 		}
 	}
-	process.env = new Proxy(baseEnv, {
+	process.env = new Proxy(counterpart, {
 		defineProperty(target, key, inputDescriptor) {
 			return Object.defineProperty(target, key, {
 				configurable: true,
