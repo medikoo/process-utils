@@ -15,14 +15,14 @@ module.exports = (options = {}, callback = null) => {
 	} else if (!isObject(options)) {
 		options = {};
 	}
-	const cache = process.env;
+	const original = process.env;
 	const baseEnv = {};
-	if (options.asCopy) Object.assign(baseEnv, cache);
+	if (options.asCopy) Object.assign(baseEnv, original);
 	if (options.whitelist) {
 		for (const varName of ensureIterable(options.whitelist, {
 			errorMessage: "options.whitelist expected to be an iterable, got %v"
 		})) {
-			if (hasOwnProperty.call(cache, varName)) baseEnv[varName] = cache[varName];
+			if (hasOwnProperty.call(original, varName)) baseEnv[varName] = original[varName];
 		}
 	}
 	process.env = new Proxy(baseEnv, {
@@ -35,13 +35,13 @@ module.exports = (options = {}, callback = null) => {
 			});
 		}
 	});
-	const restoreEnv = () => (process.env = cache);
+	const restoreEnv = () => (process.env = original);
 
-	if (!callback) return { originalEnv: cache, restoreEnv };
+	if (!callback) return { originalEnv: original, restoreEnv };
 
 	let result;
 	try {
-		result = callback(cache);
+		result = callback(original);
 	} catch (error) {
 		restoreEnv();
 		throw error;
