@@ -18,7 +18,7 @@ npm install process-utils
 
 #### `override-env`
 
-Overrides `process.env` until provided `restoreEnv()` is called. Helpful when testing modules which behavior relies on environment settings.
+Overrides `process.env` until returned `restoreEnv()` is called. Helpful when testing modules which behavior relies on environment settings.
 
 ```javascript
 const overrideEnv = require("process-utils/override-env");
@@ -94,6 +94,35 @@ console.log(originalEnv.BAR); // undefined
 restoreEnv();
 console.log(process.env.BAR); // undefined
 ```
+
+#### `override-argv`
+
+Overrides `process.argv` until returned `restoreArgv()` is called. Helpful when testing modules which behavior relies on command line arguments
+
+```javascript
+const overrideArgv = require("process-utils/override-argv");
+
+const { restoreArg, originalArgv } = overrideEnv();
+// Exposes original `process.argv`
+console.log(originalArgv);
+// Counterpart by default contains only first item from original argv
+console.log(process.argv);
+
+// Provides a callback to restore previous state
+restoreArgv();
+```
+
+Optionally _callback_ can be passed to `overrideEnv`, it's invoked immediately, and only for a time of it's execution `process.argc` is overriden. if _callback_ returns _thenable_ then `process.argv` is restored when given _thenable_ resolves.
+
+##### Supported options
+
+###### sliceAt `integer` (default: `1`)
+
+Til which index should original `process.argv` be exposed on counterpart
+
+###### args `iterable` (default: `[]`)
+
+Arguments to add to counterpart `process.argv`
 
 #### `override-stdout-write` & `override-stderr-write`
 
