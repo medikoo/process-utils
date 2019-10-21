@@ -17,6 +17,9 @@ module.exports = (options = {}, callback = null) => {
 	} else if (!isObject(options)) {
 		options = {};
 	}
+	if (options.asCopy && options.whitelist) {
+		throw new Error("Either `asCopy` or `whitelist` option is expected by not both");
+	}
 	const original = process.env;
 	const counterpart = createEnv();
 	if (options.asCopy) Object.assign(counterpart, original);
