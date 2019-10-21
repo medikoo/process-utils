@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/medikoo/process-utils/compare/v2.5.0...v2.6.0) (2019-10-21)
+
+### Features
+
+- **Override Env:** `variables` option ([bbc70f2](https://github.com/medikoo/process-utils/commit/bbc70f2))
+- `createEnv` util ([2599d53](https://github.com/medikoo/process-utils/commit/2599d53))
+- Support initial properties in `createEnv` util ([3e64ae9](https://github.com/medikoo/process-utils/commit/3e64ae9))
+
+### Tests
+
+- Improve coverage ([3337766](https://github.com/medikoo/process-utils/commit/3337766))
+- Improve test names ([75c6cc1](https://github.com/medikoo/process-utils/commit/75c6cc1))
+- Split overrideEnv tests ([f12192c](https://github.com/medikoo/process-utils/commit/f12192c))
+
 ## [2.5.0](https://github.com/medikoo/process-utils/compare/v2.4.0...v2.5.0) (2019-09-03)
 
 ### Features

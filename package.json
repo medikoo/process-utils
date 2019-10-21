@@ -1,6 +1,6 @@
 {
 	"name": "process-utils",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"description": "Utilities for process object",
 	"author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
 	"keywords": [
