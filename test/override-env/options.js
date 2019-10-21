@@ -6,7 +6,7 @@ const test        = require("tape")
 test("overrideEnv: options", t => {
 	const { env } = process;
 
-	t.test("Whitelist", t => {
+	t.test("`whitelist` option", t => {
 		env.FOO = "bar";
 		env.LOREM = "ispum";
 		try {
@@ -24,7 +24,7 @@ test("overrideEnv: options", t => {
 		t.end();
 	});
 
-	t.test("As copy", t => {
+	t.test("`asCopy` option", t => {
 		env.FOO = "bar";
 		try {
 			const { restoreEnv } = overrideEnv({ asCopy: true });
