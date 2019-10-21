@@ -82,7 +82,11 @@ setTimeout(() => {
 }, 110);
 ```
 
-##### Provide a whitelist of env vars to expose on a copy
+##### Supported options
+
+###### whitelist `iterable` (default: `[]`)
+
+Provide a whitelist of env vars to expose on a copy
 
 ```javascript
 process.env.FOO = "bar";
@@ -93,7 +97,9 @@ console.log(process.env.FOO); // "bar"
 console.log(process.env.LOREM); // undefined
 ```
 
-##### Override env as copy of original
+###### asCopy `boolean` (default: `false`)
+
+Override env as copy of original
 
 ```javascript
 process.env.FOO = "bar";
