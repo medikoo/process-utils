@@ -27,14 +27,14 @@ module.exports = (options = {}, callback = null) => {
 		errorMessage: "`whitelist` expected to be a string collection, got %v"
 	});
 	const original = process.env;
-	const counterpart = createEnv();
-	if (options.asCopy) Object.assign(counterpart, original);
+	const replacement = createEnv();
+	if (options.asCopy) Object.assign(replacement, original);
 	if (whitelist) {
 		for (const varName of whitelist) {
-			if (objHasOwnProperty.call(original, varName)) counterpart[varName] = original[varName];
+			if (objHasOwnProperty.call(original, varName)) replacement[varName] = original[varName];
 		}
 	}
-	process.env = counterpart;
+	process.env = replacement;
 	const restore = () => (process.env = original);
 
 	if (!callback) return { originalEnv: original, restoreEnv: restore };
