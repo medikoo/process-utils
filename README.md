@@ -16,6 +16,21 @@ npm install process-utils
 
 ### Available utilities
 
+#### `create-env`
+
+Creates `env` object. It's a plain object ensured to have only string property values
+
+```javascript
+const createEnv = require("process-utils/create-env");
+
+const env = createEnv();
+env.FOO = 12;
+
+console.log(env.FOO); // "12"
+
+spawn(program, args, { env }); // Use to invoke other processes in deterministic environment
+```
+
 #### `override-env`
 
 Overrides `process.env` until returned `restoreEnv()` is called. Helpful when testing modules which behavior relies on environment settings.
