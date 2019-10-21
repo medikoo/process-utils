@@ -159,7 +159,7 @@ Variables to be exposed on overriden `process.env`
 
 ```javascript
 process.env.FOO = "bar";
-const { restoreEnv, originalEnv, createEnv } = overrideEnv({ variables: { ELO: 12 } });
+const { restoreEnv, originalEnv } = overrideEnv({ variables: { ELO: 12 } });
 // Exposes process.env props
 console.log(process.env.FOO); // undefined
 console.log(process.env.ELO); // "12"
