@@ -19,9 +19,46 @@ test("createEnv", t => {
 		"Should override property definitions"
 	);
 
-	env = createEnv({ FOO: "bar" });
+	process.env.BAR = "elo";
+	t.equal(env.BAR, undefined, "Should not leak new process.env vars on created env");
+	delete process.env.BAR;
 
-	t.equal(env.FOO, "bar", "Should support propeties input");
+	t.test("`whitelist` option", t => {
+		process.env.FOO = "bar";
+		process.env.LOREM = "ispum";
+		try {
+			env = createEnv({ whitelist: ["FOO"] });
+			t.equal(env.FOO, "bar", "Should expose whitelisted variables");
+			t.equal(env.LOREM, undefined, "Should not expose not whitelisted variables");
+		} finally {
+			delete process.env.FOO;
+			delete process.env.LOREM;
+		}
+		t.end();
+	});
+
+	t.test("`asCopy` option", t => {
+		process.env.FOO = "bar";
+		try {
+			env = createEnv({ asCopy: true });
+			t.equal(env.FOO, "bar", "Should copy existing variables");
+		} finally {
+			delete process.env.FOO;
+		}
+		t.end();
+	});
+
+	t.test("`variables` option", t => {
+		process.env.FOO = "bar";
+		try {
+			env = createEnv({ variables: { MARKO: 12 } });
+			t.equal(env.FOO, undefined, "Should not expose process.env vars");
+			t.equal(env.MARKO, "12", "Should copy option.variables onto new process.env");
+		} finally {
+			delete process.env.FOO;
+		}
+		t.end();
+	});
 
 	t.end();
 });

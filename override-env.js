@@ -3,7 +3,6 @@
 const ensureIterable      = require("type/iterable/ensure")
     , isPlainFunction     = require("type/plain-function/is")
     , ensurePlainFunction = require("type/plain-function/ensure")
-    , ensureObject        = require("type/object/ensure")
     , ensureString        = require("type/string/ensure")
     , isObject            = require("type/object/is")
     , processCallback     = require("./lib/private/process-callback")
@@ -33,7 +32,7 @@ module.exports = (options = {}, callback = null) => {
 		errorMessage: "`whitelist` expected to be a string collection, got %v"
 	});
 	const original = process.env;
-	const replacement = createEnv(ensureObject(options.variables, { isOptional: true }));
+	const replacement = createEnv({ variables: options.variables });
 	if (options.asCopy) Object.assign(replacement, original);
 	if (whitelist) {
 		for (const varName of whitelist) {
