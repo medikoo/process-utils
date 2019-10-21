@@ -38,5 +38,20 @@ test("overrideEnv: options", t => {
 		}
 		t.end();
 	});
+
+	t.test("`variables` option", t => {
+		env.FOO = "bar";
+		try {
+			const { restoreEnv } = overrideEnv({ variables: { MARKO: 12 } });
+			t.equal(process.env.FOO, undefined, "Should not expose process.env vars");
+			t.equal(process.env.MARKO, "12", "Should copy option.variables onto new process.env");
+
+			restoreEnv();
+		} finally {
+			delete env.FOO;
+		}
+		t.end();
+	});
+
 	t.end();
 });

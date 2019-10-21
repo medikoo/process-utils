@@ -31,6 +31,15 @@ console.log(env.FOO); // "12"
 spawn(program, args, { env }); // Use to invoke other processes in deterministic environment
 ```
 
+##### Initialization properties
+
+`env` can be pre-initialized with some properties
+
+```javascript
+const env = createEnv({ FOO: 12 });
+console.log(env.FOO); // "12"
+```
+
 #### `override-env`
 
 Overrides `process.env` until returned `restoreEnv()` is called. Helpful when testing modules which behavior relies on environment settings.
@@ -114,6 +123,20 @@ console.log(originalEnv.BAR); // undefined
 // Provides a callback to restore previous state
 restoreEnv();
 console.log(process.env.BAR); // undefined
+```
+
+###### veriables `object` (default: `null`)
+
+Variables to be exposed on overriden `process.env`
+
+```javascript
+process.env.FOO = "bar";
+const { restoreEnv, originalEnv, createEnv } = overrideEnv({ variables: { ELO: 12 } });
+// Exposes process.env props
+console.log(process.env.FOO); // undefined
+console.log(process.env.ELO); // "12"
+
+restoreEnv();
 ```
 
 #### `override-argv`
