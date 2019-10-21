@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/medikoo/process-utils/compare/v2.6.0...v3.0.0) (2019-10-21)
+
+### Features
+
+- **Create Env:** Support `asCopy`, `whitelist` and `variables` options ([266ead8](https://github.com/medikoo/process-utils/commit/266ead8))
+
+### BREAKING CHANGES
+
+- **Create Env:** Due to introduced options support, variables input now should be passed as `{ variables }` option.
+  It's no longer supported as direct first function argument
+
 ## [2.6.0](https://github.com/medikoo/process-utils/compare/v2.5.0...v2.6.0) (2019-10-21)
 
 ### Features
