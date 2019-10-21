@@ -1,9 +1,10 @@
 "use strict";
 
-const ensureObject = require("type/object/ensure");
+const ensureObject = require("type/object/ensure")
+    , entries      = require("ext/object/entries");
 
-module.exports = () =>
-	new Proxy(
+module.exports = properties => {
+	const env = new Proxy(
 		{},
 		{
 			defineProperty(target, key, inputDescriptor) {
@@ -16,3 +17,9 @@ module.exports = () =>
 			}
 		}
 	);
+
+	if (ensureObject(properties, { isOptional: true })) {
+		for (const [key, value] of entries(properties)) env[key] = value;
+	}
+	return env;
+};
