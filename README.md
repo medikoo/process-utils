@@ -16,7 +16,7 @@ npm install process-utils
 
 ### Available utilities
 
-#### `create-env(properties = {})`
+#### `create-env([options])`
 
 Creates `env` object. It's a plain object ensured to have only string property values
 
