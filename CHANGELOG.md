@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/medikoo/process-utils/compare/v3.0.0...v3.0.1) (2019-10-22)
+
+### Bug Fixes
+
+- Fix resolution of unset process.env vars from whitelist ([6c6ce8b](https://github.com/medikoo/process-utils/commit/6c6ce8b))
+
 ## [3.0.0](https://github.com/medikoo/process-utils/compare/v2.6.0...v3.0.0) (2019-10-21)
 
 ### Features
