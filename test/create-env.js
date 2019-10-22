@@ -27,9 +27,10 @@ test("createEnv", t => {
 		process.env.FOO = "bar";
 		process.env.LOREM = "ispum";
 		try {
-			env = createEnv({ whitelist: ["FOO"] });
+			env = createEnv({ whitelist: ["FOO", "MARKO"] });
 			t.equal(env.FOO, "bar", "Should expose whitelisted variables");
 			t.equal(env.LOREM, undefined, "Should not expose not whitelisted variables");
+			t.equal(env.MARKO, undefined, "Should not expose not whitelisted variables");
 		} finally {
 			delete process.env.FOO;
 			delete process.env.LOREM;

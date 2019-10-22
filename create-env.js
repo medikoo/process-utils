@@ -7,6 +7,8 @@ const ensureIterable    = require("type/iterable/ensure")
     , ensureString      = require("type/string/ensure")
     , entries           = require("ext/object/entries");
 
+const objHasOwnProperty = Object.prototype.hasOwnProperty;
+
 module.exports = (options = {}) => {
 	if (!isObject(options)) options = {};
 	if (options.asCopy && options.whitelist) {
@@ -37,7 +39,11 @@ module.exports = (options = {}) => {
 		}
 	);
 	if (options.asCopy) for (const [varName, value] of entries(process.env)) env[varName] = value;
-	if (whitelist) for (const varName of whitelist) env[varName] = process.env[varName];
+	if (whitelist) {
+		for (const varName of whitelist) {
+			if (objHasOwnProperty.call(process.env, varName)) env[varName] = process.env[varName];
+		}
+	}
 	if (variables) for (const [varName, value] of entries(variables)) env[varName] = value;
 
 	return env;
