@@ -235,6 +235,8 @@ process.stdout.write(someAnsiCodeDecoratedString); // will be output with ANSI c
 restoreStdoutWrite();
 ```
 
+Optionally _callback_ can be passed to `override*`, it's invoked immediately, and only for a time of it's execution `stream.write` is overriden. if _callback_ returns _thenable_ then `stream.write` is restored when given _thenable_ resolves.
+
 ### Tests
 
 ```bash
