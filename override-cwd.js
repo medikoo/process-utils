@@ -14,5 +14,5 @@ module.exports = (counterpart, callback = null) => {
 	const restore = () => process.chdir(original);
 
 	if (!callback) return { originalCwd: original, restoreCwd: restore };
-	return processCallback(callback, original, restore);
+	return processCallback(callback, [original], restore);
 };

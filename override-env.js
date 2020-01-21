@@ -20,5 +20,5 @@ module.exports = (options = {}, callback = null) => {
 	const restore = () => (process.env = original);
 
 	if (!callback) return { originalEnv: original, restoreEnv: restore };
-	return processCallback(callback, original, restore);
+	return processCallback(callback, [original], restore);
 };

@@ -25,5 +25,5 @@ module.exports = (options = {}, callback = null) => {
 	const restore = () => (process.argv = original);
 
 	if (!callback) return { originalArgv: original, restoreArgv: restore };
-	return processCallback(callback, original, restore);
+	return processCallback(callback, [original], restore);
 };
