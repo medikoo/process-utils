@@ -22,6 +22,7 @@
 		"lint-staged": "^10.0.1",
 		"nyc": "^15.0.0",
 		"prettier-elastic": "^1.19.1",
+		"standard-version": "^7.0.1",
 		"tape": "^4.13.0",
 		"tape-index": "^3.1.0"
 	},
@@ -64,11 +65,18 @@
 			"test/**"
 		]
 	},
+	"standard-version": {
+		"skip": {
+			"commit": true,
+			"tag": true
+		}
+	},
 	"scripts": {
 		"coverage": "nyc --reporter=lcov --reporter=html --reporter=text-summary npm test",
 		"check-coverage": "npm run coverage && nyc check-coverage --statements 80 --function 80 --branches 80 --lines 80",
 		"lint": "eslint --ignore-path=.gitignore .",
 		"lint-updated": "pipe-git-updated --ext=js -- eslint --ignore-pattern '!*'",
+		"prepare-release": "standard-version && prettier --write CHANGELOG.md",
 		"prettier-check-updated": "pipe-git-updated --ext=css --ext=html --ext=js --ext=json --ext=md --ext=yaml --ext=yml -- prettier -c",
 		"prettify": "prettier --write --ignore-path .gitignore '**/*.{css,html,js,json,md,yaml,yml}'",
 		"test": "npm run test-prepare && npm run test-run",
