@@ -184,7 +184,7 @@ console.log(process.argv);
 restoreArgv();
 ```
 
-Optionally _callback_ can be passed to `overrideEnv`, it's invoked immediately, and only for a time of it's execution `process.argc` is overriden. if _callback_ returns _thenable_ then `process.argv` is restored when given _thenable_ resolves.
+Optionally _callback_ can be passed to `overrideArgv`, it's invoked immediately, and only for a time of it's execution `process.argv` is overriden. if _callback_ returns _thenable_ then `process.argv` is restored when given _thenable_ resolves.
 
 ##### Supported options
 
