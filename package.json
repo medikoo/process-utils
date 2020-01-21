@@ -10,19 +10,19 @@
 	],
 	"repository": "medikoo/process-utils",
 	"dependencies": {
-		"ext": "^1.1.0",
+		"ext": "^1.4.0",
 		"type": "^2.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^6.5.1",
-		"eslint-config-medikoo": "^2.6.0",
-		"essentials": "^1.0.0",
+		"eslint": "^6.8.0",
+		"eslint-config-medikoo": "^2.7.0",
+		"essentials": "^1.1.1",
 		"git-list-updated": "^1.2.1",
-		"husky": "^3.0.9",
-		"lint-staged": "^9.4.2",
+		"husky": "^3.1.0",
+		"lint-staged": "^9.5.0",
 		"nyc": "^14.1.1",
-		"prettier-elastic": "^1.18.2",
-		"tape": "^4.11.0",
+		"prettier-elastic": "^1.19.1",
+		"tape": "^4.13.0",
 		"tape-index": "^3.1.0"
 	},
 	"husky": {
