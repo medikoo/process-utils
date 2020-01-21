@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/medikoo/process-utils/compare/v3.0.1...v3.1.0) (2020-01-21)
+
+### Features
+
+- Callback support for `overrdieStd*` utils ([8a83c69](https://github.com/medikoo/process-utils/commit/8a83c69d06072717d1f7ebc8bdae867882429929))
+
 ### [3.0.1](https://github.com/medikoo/process-utils/compare/v3.0.0...v3.0.1) (2019-10-22)
 
 ### Bug Fixes
