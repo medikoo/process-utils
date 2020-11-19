@@ -1,6 +1,6 @@
 # `tmpdir`
 
-Creates (on first call) and returns process specific temporary directory, which is:
+Creates (on first call) and returns path to process specific temporary directory, which is:
 
 - Created in context of system temp dir
 - Is automatically cleaned up and removed on process exit

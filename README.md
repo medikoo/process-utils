@@ -21,7 +21,9 @@ npm install process-utils
 - [`override-cwd`](docs/override-cwd.md) - Override `process.cwd()` temporarily
 - [`override-env`](docs/override-env.md) - Override `process.env` temporarily
 - [`override-stdout-write` & `override-stderr-write`](docs/override-std-write.md) - Override `process.std*.write` method temporarily
-- [`tmpdir`](docs/tmpdir/index.md) - Creates (on first call) and returns process specific temporary directory
+- **tmpdir**
+  - [`tmpdir`](docs/tmpdir/index.md) - Creates (on first call) and returns path to process specific temporary directory
+  - [`tmpdir/provision`](docs/tmpdir/provision.md) - Creates and returns path to new temp directory, placed in context of process specific temporary directory
 
 ### Tests
 
