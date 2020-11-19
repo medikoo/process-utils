@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/medikoo/process-utils/compare/v3.1.0...v4.0.0) (2020-11-19)
+
+### ⚠ BREAKING CHANGES
+
+- Node.js version 10 or later is required
+
+### Features
+
+- `tmp/provision` util ([0fd8259](https://github.com/medikoo/process-utils/commit/0fd8259c5fb33f739d0567c6b7ed8c7511c491dc))
+- `tmpdir` util ([1fc7f94](https://github.com/medikoo/process-utils/commit/1fc7f94a41b05d8f02c60425d3c67a0384c82153))
+- Drop support for Node.js versions lower than v10 ([5e2ad7d](https://github.com/medikoo/process-utils/commit/5e2ad7d17597bf5a914850a89181c0ddee1f43d9))
+
 ## [3.1.0](https://github.com/medikoo/process-utils/compare/v3.0.1...v3.1.0) (2020-01-21)
 
 ### Features
