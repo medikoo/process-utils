@@ -14,7 +14,7 @@
 		"type": "^2.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^6.8.0",
+		"eslint": "^7.13.0",
 		"eslint-config-medikoo": "^2.7.0",
 		"essentials": "^1.1.1",
 		"git-list-updated": "^1.2.1",
