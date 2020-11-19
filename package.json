@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.13.0",
-		"eslint-config-medikoo": "^2.7.0",
+		"eslint-config-medikoo": "^3.1.0",
 		"essentials": "^1.1.1",
 		"git-list-updated": "^1.2.1",
 		"husky": "^4.0.10",
@@ -40,11 +40,8 @@
 		]
 	},
 	"eslintConfig": {
-		"extends": "medikoo",
-		"root": true,
-		"env": {
-			"node": true
-		}
+		"extends": "medikoo/node",
+		"root": true
 	},
 	"prettier": {
 		"printWidth": 100,
@@ -82,6 +79,9 @@
 		"test": "npm run test-prepare && npm run test-run",
 		"test-prepare": "tape-index",
 		"test-run": "node test.index.js"
+	},
+	"engines": {
+		"node": ">=10.0"
 	},
 	"license": "ISC"
 }
