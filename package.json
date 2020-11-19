@@ -11,6 +11,8 @@
 	"repository": "medikoo/process-utils",
 	"dependencies": {
 		"ext": "^1.4.0",
+		"fs2": "^0.3.9",
+		"memoizee": "^0.4.14",
 		"type": "^2.0.0"
 	},
 	"devDependencies": {
