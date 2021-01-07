@@ -10,7 +10,16 @@ const {
   originalStdoutWrite, // Original `write` bound to `process.stdout`
   originalWrite, // Original `write` on its own
   restoreStdoutWrite // Allows to restore previous state
-} = overrideStdoutWrite((data, superWrite) => superWrite(stripAnsi(data)));
+} = overrideStdoutWrite(
+  // process.stdout.write replacement
+  (
+    data, // data input
+    originalStdoutWrite // // Original `write` bound to `process.stdout`
+  ) => {
+    // Example of filtering ANSI codes for original stdout.write
+    originalStdoutWrite(stripAnsi(data));
+  }
+);
 
 process.stdout.write(someAnsiCodeDecoratedString); // will be output with ANSI codes stripped out
 
