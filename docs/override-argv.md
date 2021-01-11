@@ -5,7 +5,7 @@ Overrides `process.argv` until returned `restoreArgv()` is called. Helpful when 
 ```javascript
 const overrideArgv = require("process-utils/override-argv");
 
-const { restoreArg, originalArgv } = overrideEnv();
+const { restoreArg, originalArgv } = overrideArgv({ sliceAt: 1, args: [] });
 // Exposes original `process.argv`
 console.log(originalArgv);
 // Counterpart by default contains only first item from original argv
