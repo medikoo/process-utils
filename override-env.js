@@ -2,7 +2,7 @@
 
 const isPlainFunction     = require("type/plain-function/is")
     , ensurePlainFunction = require("type/plain-function/ensure")
-    , isObject            = require("type/object/is")
+    , ensurePlainObject   = require("type/plain-object/ensure")
     , processCallback     = require("./lib/private/process-callback")
     , createEnv           = require("./create-env");
 
@@ -11,8 +11,8 @@ module.exports = (options = {}, callback = null) => {
 	if (!callback && isPlainFunction(options)) {
 		callback = options;
 		options = {};
-	} else if (!isObject(options)) {
-		options = {};
+	} else {
+		options = ensurePlainObject(options, { default: {}, name: "options" });
 	}
 	const original = process.env;
 	const replacement = createEnv(options);
