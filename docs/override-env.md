@@ -51,48 +51,4 @@ setTimeout(() => {
 
 ## Supported options
 
-### whitelist `iterable` (default: `[]`)
-
-Provide a whitelist of env vars to expose on a copy
-
-```javascript
-process.env.FOO = "bar";
-process.env.LOREM = "ipsum";
-const { restoreEnv, originalEnv } = overrideEnv({ whitelist: ["FOO"] });
-// Exposes onlywhitelisted props
-console.log(process.env.FOO); // "bar"
-console.log(process.env.LOREM); // undefined
-```
-
-### asCopy `boolean` (default: `false`)
-
-Override env as copy of original
-
-```javascript
-process.env.FOO = "bar";
-const { restoreEnv, originalEnv } = overrideEnv({ asCopy: true });
-// Exposes process.env props
-console.log(process.env.FOO); // "bar"
-
-process.env.BAR = "elo";
-// Further updates doesn't affect cached original env
-console.log(originalEnv.BAR); // undefined
-
-// Provides a callback to restore previous state
-restoreEnv();
-console.log(process.env.BAR); // undefined
-```
-
-### veriables `object` (default: `null`)
-
-Variables to be exposed on overriden `process.env`
-
-```javascript
-process.env.FOO = "bar";
-const { restoreEnv, originalEnv } = overrideEnv({ variables: { ELO: 12 } });
-// Exposes process.env props
-console.log(process.env.FOO); // undefined
-console.log(process.env.ELO); // "12"
-
-restoreEnv();
-```
+_Same as in [createEnv](create-env.md#supported-options) util_
